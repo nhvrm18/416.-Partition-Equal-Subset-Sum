@@ -7,14 +7,14 @@ public:
         {
             for(int j =0;j<sum+1;j++)
             {
-                if(i==0)
-                    t[i][j] = false;
-              else  if(j==0)
+                if(j==0)
                     t[i][j] = true;
+                else if(i==0)
+                    t[i][j] = false;
                 else
                 {
                     if(nums[i-1] <= j)
-                    t[i][j] = t[i][j-nums[i-1]] || t[i-1][j];
+                    t[i][j] = t[i-1][j-nums[i-1]] || t[i-1][j];
                     else
                     t[i][j] = t[i-1][j];
                 }
@@ -22,6 +22,13 @@ public:
                 
             }
         }
+        for (int x = 0; x < n+1; x++) {
+            for (int y = 0; y < sum+1; y++) {
+                 cout << t[x][y] << " ";
+            }
+            cout << endl;
+        }
+       
         return t[n][sum];
     }
     bool canPartition(vector<int>& nums) {
