@@ -22,13 +22,7 @@ public:
                 
             }
         }
-        for (int x = 0; x < n+1; x++) {
-            for (int y = 0; y < sum+1; y++) {
-                 cout << t[x][y] << " ";
-            }
-            cout << endl;
-        }
-       
+    
         return t[n][sum];
     }
     bool canPartition(vector<int>& nums) {
@@ -40,11 +34,11 @@ public:
             sum = sum + nums[i];
             
         }
-        if(sum % 2 != 0 || n %2 != 0)
+        if(sum % 2 != 0)
             return false;
         if(sum % 2 == 0)
-        {
-           ans = subsetsum(nums,sum/2,n);
+        {  sum = sum/2;
+           ans = subsetsum(nums,sum,n);
         }
         return ans;
     }
